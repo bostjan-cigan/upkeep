@@ -1,0 +1,82 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.xcarchive
+timeline.xctimeline
+playground.xcworkspace
+.swiftpm/
+.build/
+
+# Build outputs from ./build.sh and Tools/
+*.zip
+*.dmg
+*.app
+
+# Signing: your Apple Team ID (see Config/Signing.xcconfig)
+Config/*.local.xcconfig
+*.local.xcconfig
+
+# Certificates, keys and provisioning profiles. Upkeep keeps its own HTTPS certificate and
+# Web Push (VAPID) key in ~/Library/Application Support, never in the repository.
+*.p12
+*.pfx
+*.pem
+*.key
+*.cer
+*.crt
+*.csr
+*.der
+*.p8
+*.mobileprovision
+*.provisionprofile
+*.keychain
+*.keychain-db
+vapid.key
+AuthKey_*.p8
+ExportOptions.plist
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.secret
+secrets/
+
+# Web app (Web/)
+node_modules/
+dist/
+dev-dist/
+*.tsbuildinfo
+.vite/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude Code
+.claude/
+CLAUDE.md
