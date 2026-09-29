@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bostjan-cigan.com/schemas/upkeep-household.v1.schema.json",
+  "title": "Upkeep household snapshot (format version 1)",
+  "description": "One device's full replica of a household: devices/<deviceId>.json in the shared folder, private backups, Export…, and the body of /api/sync. Merge rules and record kinds: Docs/Sync.md. Dates are UTC ISO 8601 with milliseconds.",
+  "type": "object",
+  "required": ["format", "schemaVersion", "exportedAt", "device", "records", "tombstones"],
+  "properties": {
+    "format": { "const": "com.bostjancigan.upkeep.household" },
+    "schemaVersion": { "const": 1 },
+    "exportedAt": { "$ref": "#/$defs/date" },
+    "device": {
+      "type": "object",
+      "required": ["id", "name", "platform", "personUid", "build"],
+      "properties": {
+        "id": { "type": "string", "description": "Stable random id of the writing device." },
+        "name": { "type": "string" },
+        "platform": { "enum": ["mac", "web"] },
+        "personUid": { "type": "string", "description": "Who uses this device; empty if not chosen." },
+        "build": { "type": "string" }
+      }
+    },
+    "records": {
+      "type": "array",
+      "description": "Sorted by (kind, uid). Kinds this build doesn't know are kept verbatim.",
+      "items": {
+        "type": "object",
+        "required": ["kind", "uid", "modifiedAt", "modifiedBy", "data"],
+        "properties": {
+          "kind": { "type": "string" },
+          "uid": { "type": "string" },
+          "modifiedAt": { "$ref": "#/$defs/date" },
+          "modifiedBy": { "type": "string" },
+          "data": { "type": "object" }
+        },
+        "allOf": [
+          { "if": { "properties": { "kind": { "const": "person" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/person" } } } },
+          { "if": { "properties": { "kind": { "const": "homeItem" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/homeItem" } } } },
+          { "if": { "properties": { "kind": { "const": "task" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/task" } } } },
+          { "if": { "properties": { "kind": { "const": "taskLog" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/taskLog" } } } },
+          { "if": { "properties": { "kind": { "const": "mac" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/mac" } } } },
+          { "if": { "properties": { "kind": { "const": "pushKey" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/pushKey" } } } },
+          { "if": { "properties": { "kind": { "const": "pushSubscription" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/pushSubscription" } } } },
+          { "if": { "properties": { "kind": { "const": "pushDelivery" } } }, "then": { "properties": { "data": { "$ref": "#/$defs/pushDelivery" } } } }
+        ]
+      }
+    },
+    "tombstones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "uid", "deletedAt", "deletedBy"],
+        "properties": {
+          "kind": { "type": "string" },
+          "uid": { "type": "string" },
+          "deletedAt": { "$ref": "#/$defs/date" },
+          "deletedBy": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "date": { "type": "string", "format": "date-time" },
+    "optionalDate": { "type": ["string", "null"], "format": "date-time" },
+    "weekdays": { "type": "string", "pattern": "^[1-7]*$", "description": "Calendar weekdays as digits, 1 = Sunday … 7 = Saturday. Empty means any day." },
+    "weekdays": { "type": "string", "pattern": "^[1-7]*$", "description": "Calendar weekdays, 1 = Sunday … 7 = Saturday." },
+    "person": {
+      "type": "object",
+      "required": ["name", "colorKey", "choreDays", "reminders"],
+      "properties": {
+        "name": { "type": "string" },
+        "colorKey": { "type": "string" },
+        "choreDays": { "$ref": "#/$defs/weekdays", "description": "The days this person does chores; new tasks start on them." },
+        "reminders": {
+          "type": "object",
+          "required": ["nagHours", "activeStart", "activeEnd", "remindDays", "workEnabled", "workDays", "workStart", "workEnd", "silencedUntil"],
+          "properties": {
+            "nagHours": { "type": "integer", "minimum": 1 },
+            "activeStart": { "type": "integer", "minimum": 0, "maximum": 23 },
+            "activeEnd": { "type": "integer", "minimum": 0, "maximum": 23 },
+            "remindDays": { "$ref": "#/$defs/weekdays" },
+            "workEnabled": { "type": "boolean" },
+            "workDays": { "$ref": "#/$defs/weekdays" },
+            "workStart": { "type": "integer", "minimum": 0, "maximum": 23 },
+            "workEnd": { "type": "integer", "minimum": 0, "maximum": 23 },
+            "silencedUntil": { "$ref": "#/$defs/optionalDate" }
+          }
+        }
+      }
+    },
+    "homeItem": {
+      "type": "object",
+      "required": ["name", "iconKey", "colorKey", "notes", "room", "createdAt"],
+      "properties": {
+        "name": { "type": "string" },
+        "iconKey": { "type": "string", "description": "An IconKey raw value (Upkeep/Icons/<key>.svg)." },
+        "colorKey": { "type": "string" },
+        "notes": { "type": "string" },
+        "room": { "type": "string" },
+        "createdAt": { "$ref": "#/$defs/date" }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": ["itemUid", "title", "intervalValue", "intervalUnit", "scheduleKind", "anchorDate", "repeats", "isActive", "baselineDoneAt", "snoozedUntil", "preferredDays", "shiftedFrom", "shiftedTo", "assigneeUid", "onceAssigneeUid", "onceAssigneeAfter", "createdAt"],
+      "properties": {
+        "itemUid": { "type": "string" },
+        "title": { "type": "string" },
+        "intervalValue": { "type": "integer", "minimum": 1 },
+        "intervalUnit": { "enum": ["day", "week", "month", "year"] },
+        "scheduleKind": { "enum": ["interval", "fixedDate"] },
+        "anchorDate": { "$ref": "#/$defs/optionalDate", "description": "First due date; an interval task uses it until it has been done once." },
+        "repeats": { "type": "boolean" },
+        "isActive": { "type": "boolean" },
+        "baselineDoneAt": { "$ref": "#/$defs/optionalDate" },
+        "snoozedUntil": { "$ref": "#/$defs/optionalDate" },
+        "preferredDays": { "$ref": "#/$defs/weekdays", "description": "Days this task should land on; ignored by fixed dates and sub-weekly intervals." },
+        "shiftedFrom": { "$ref": "#/$defs/optionalDate", "description": "A one-off move: the due date it was made against. Ignored once the task falls elsewhere." },
+        "shiftedTo": { "$ref": "#/$defs/optionalDate", "description": "Where that one occurrence went." },
+        "assigneeUid": { "type": "string", "description": "Person uid; empty = everyone." },
+        "onceAssigneeUid": { "type": ["string", "null"], "description": "A one-off hand-over of the next occurrence: person uid, empty = everyone, null = none." },
+        "onceAssigneeAfter": { "$ref": "#/$defs/optionalDate", "description": "The lastDoneAt the hand-over was made after. Ignored once the task has been done again." },
+        "createdAt": { "$ref": "#/$defs/date" }
+      }
+    },
+    "taskLog": {
+      "type": "object",
+      "required": ["taskUid", "completedAt", "note", "completedByUid"],
+      "properties": {
+        "taskUid": { "type": "string" },
+        "completedAt": { "$ref": "#/$defs/date" },
+        "note": { "type": "string" },
+        "completedByUid": { "type": "string" }
+      }
+    },
+    "mac": {
+      "type": "object",
+      "description": "A Mac in the household, as it describes itself. uid = its deviceId.",
+      "required": ["name", "personUid", "servesPhones", "phoneHost", "sendsReminders"],
+      "properties": {
+        "name": { "type": "string" },
+        "personUid": { "type": "string" },
+        "servesPhones": { "type": "boolean" },
+        "phoneHost": { "type": "string", "description": "e.g. upkeep-bostjan.local; empty when not serving." },
+        "sendsReminders": { "type": "boolean", "description": "Sends phones paired with other Macs their reminders when those haven't." }
+      }
+    },
+    "pushKey": {
+      "type": "object",
+      "description": "The household's VAPID key. uid = \"household\".",
+      "required": ["privateKey"],
+      "properties": { "privateKey": { "type": "string", "description": "Base64url raw P-256 private key." } }
+    },
+    "pushSubscription": {
+      "type": "object",
+      "description": "A phone that wants reminders. uid = the phone's deviceId.",
+      "required": ["phoneName", "personUid", "endpoint", "p256dh", "auth", "pairedMacId", "createdAt"],
+      "properties": {
+        "phoneName": { "type": "string" },
+        "personUid": { "type": "string" },
+        "endpoint": { "type": "string" },
+        "p256dh": { "type": "string" },
+        "auth": { "type": "string" },
+        "pairedMacId": { "type": "string", "description": "The Mac that sends on time." },
+        "createdAt": { "$ref": "#/$defs/date" }
+      }
+    },
+    "pushDelivery": {
+      "type": "object",
+      "description": "The last reminder slot sent to a phone. uid = \"sent-\" + the phone's deviceId.",
+      "required": ["lastSentSlot", "sentBy"],
+      "properties": {
+        "lastSentSlot": { "$ref": "#/$defs/optionalDate" },
+        "sentBy": { "type": "string" }
+      }
+    }
+  }
+}
