@@ -1,0 +1,162 @@
+{
+  "device": {
+    "build": "1.0 (20260922.fixture)",
+    "id": "A1111111-1111-4111-8111-111111111111",
+    "name": "Ana's iPhone",
+    "personUid": "person-ana",
+    "platform": "web"
+  },
+  "exportedAt": "2026-09-22T12:00:00.000Z",
+  "format": "com.bostjancigan.upkeep.household",
+  "records": [
+    {
+      "data": {
+        "colorKey": "blue",
+        "createdAt": "2026-09-20T08:01:00.000Z",
+        "iconKey": "dishwasher",
+        "name": "Dishwasher",
+        "notes": "Bosch SMV4, salt under the sink",
+        "room": "Kitchen"
+      },
+      "kind": "homeItem",
+      "modifiedAt": "2026-09-20T08:01:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "item-dishwasher"
+    },
+    {
+      "data": {
+        "colorKey": "blue",
+        "createdAt": "2026-09-15T18:00:00.000Z",
+        "iconKey": "window",
+        "name": "Windows (upstairs)",
+        "notes": "",
+        "room": ""
+      },
+      "kind": "homeItem",
+      "modifiedAt": "2026-09-22T09:00:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "item-windows"
+    },
+    {
+      "data": {
+        "choreDays": "17",
+        "colorKey": "teal",
+        "name": "Ana",
+        "reminders": {
+          "activeEnd": 21,
+          "activeStart": 9,
+          "nagHours": 3,
+          "remindDays": "1234567",
+          "silencedUntil": null,
+          "workDays": "23456",
+          "workEnabled": false,
+          "workEnd": 17,
+          "workStart": 9
+        }
+      },
+      "kind": "person",
+      "modifiedAt": "2026-09-20T08:00:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "person-ana"
+    },
+    {
+      "data": {
+        "addedAt": "2026-09-22T09:30:00.000Z",
+        "checked": false,
+        "listUid": "list-home",
+        "quantity": 2,
+        "source": {
+          "itemUid": "item-dishwasher"
+        },
+        "tags": [
+          "kitchen",
+          "monthly"
+        ],
+        "title": "Dishwasher salt"
+      },
+      "kind": "shoppingEntry",
+      "modifiedAt": "2026-09-22T09:30:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "shop-salt"
+    },
+    {
+      "data": {
+        "anchorDate": null,
+        "assigneeUid": "person-ana",
+        "baselineDoneAt": null,
+        "createdAt": "2026-09-20T08:02:00.000Z",
+        "intervalUnit": "month",
+        "intervalValue": 2,
+        "isActive": true,
+        "itemUid": "item-dishwasher",
+        "preferredDays": "",
+        "repeats": true,
+        "scheduleKind": "interval",
+        "shiftedFrom": null,
+        "shiftedTo": null,
+        "snoozedUntil": null,
+        "title": "Clean the filter"
+      },
+      "kind": "task",
+      "modifiedAt": "2026-09-22T10:00:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "task-filter"
+    },
+    {
+      "data": {
+        "anchorDate": null,
+        "assigneeUid": "",
+        "baselineDoneAt": "2026-09-20T08:02:00.000Z",
+        "createdAt": "2026-09-20T08:02:00.000Z",
+        "intervalUnit": "month",
+        "intervalValue": 1,
+        "isActive": true,
+        "itemUid": "item-dishwasher",
+        "preferredDays": "",
+        "repeats": true,
+        "scheduleKind": "interval",
+        "shiftedFrom": null,
+        "shiftedTo": null,
+        "snoozedUntil": null,
+        "title": "Refill salt & rinse aid"
+      },
+      "kind": "task",
+      "modifiedAt": "2026-09-21T07:00:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "task-salt"
+    },
+    {
+      "data": {
+        "completedAt": "2026-09-22T10:00:30.123Z",
+        "completedByUid": "person-ana",
+        "note": "",
+        "taskUid": "task-filter"
+      },
+      "kind": "taskLog",
+      "modifiedAt": "2026-09-22T10:00:30.123Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "log-a1"
+    }
+  ],
+  "schemaVersion": 1,
+  "tombstones": [
+    {
+      "deletedAt": "2026-09-10T00:00:00.000Z",
+      "deletedBy": "A1111111-1111-4111-8111-111111111111",
+      "kind": "task",
+      "uid": "task-retired"
+    },
+    {
+      "deletedAt": "2026-09-22T11:00:00.000Z",
+      "deletedBy": "A1111111-1111-4111-8111-111111111111",
+      "kind": "task",
+      "uid": "task-rinse"
+    },
+    {
+      "deletedAt": "2026-09-22T11:00:00.001Z",
+      "deletedBy": "A1111111-1111-4111-8111-111111111111",
+      "kind": "taskLog",
+      "uid": "log-rinse"
+    }
+  ]
+}

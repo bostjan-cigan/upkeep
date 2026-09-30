@@ -1,0 +1,193 @@
+{
+  "records": [
+    {
+      "data": {
+        "colorKey": "blue",
+        "createdAt": "2026-09-20T08:01:00.000Z",
+        "iconKey": "dishwasher",
+        "name": "Dishwasher",
+        "notes": "Bosch SMV4, salt under the sink",
+        "room": "Kitchen"
+      },
+      "kind": "homeItem",
+      "modifiedAt": "2026-09-20T08:01:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "item-dishwasher"
+    },
+    {
+      "data": {
+        "colorKey": "blue",
+        "createdAt": "2026-09-15T18:00:00.000Z",
+        "iconKey": "window",
+        "name": "Windows (upstairs)",
+        "notes": "",
+        "room": ""
+      },
+      "kind": "homeItem",
+      "modifiedAt": "2026-09-22T09:00:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "item-windows"
+    },
+    {
+      "data": {
+        "choreDays": "17",
+        "colorKey": "teal",
+        "name": "Ana",
+        "reminders": {
+          "activeEnd": 21,
+          "activeStart": 9,
+          "nagHours": 3,
+          "remindDays": "1234567",
+          "silencedUntil": null,
+          "workDays": "23456",
+          "workEnabled": false,
+          "workEnd": 17,
+          "workStart": 9
+        }
+      },
+      "kind": "person",
+      "modifiedAt": "2026-09-20T08:00:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "person-ana"
+    },
+    {
+      "data": {
+        "choreDays": "17",
+        "colorKey": "indigo",
+        "name": "Boštjan",
+        "reminders": {
+          "activeEnd": 21,
+          "activeStart": 9,
+          "nagHours": 3,
+          "remindDays": "1234567",
+          "silencedUntil": "2026-09-23T07:00:00.000Z",
+          "workDays": "23456",
+          "workEnabled": true,
+          "workEnd": 17,
+          "workStart": 9
+        }
+      },
+      "kind": "person",
+      "modifiedAt": "2026-09-20T09:00:00.000Z",
+      "modifiedBy": "B2222222-2222-4222-8222-222222222222",
+      "uid": "person-bostjan"
+    },
+    {
+      "data": {
+        "addedAt": "2026-09-22T09:30:00.000Z",
+        "checked": false,
+        "listUid": "list-home",
+        "quantity": 2,
+        "source": {
+          "itemUid": "item-dishwasher"
+        },
+        "tags": [
+          "kitchen",
+          "monthly"
+        ],
+        "title": "Dishwasher salt"
+      },
+      "kind": "shoppingEntry",
+      "modifiedAt": "2026-09-22T09:30:00.000Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "shop-salt"
+    },
+    {
+      "data": {
+        "anchorDate": null,
+        "assigneeUid": "",
+        "baselineDoneAt": null,
+        "createdAt": "2026-09-20T08:02:00.000Z",
+        "intervalUnit": "month",
+        "intervalValue": 1,
+        "isActive": true,
+        "itemUid": "item-dishwasher",
+        "preferredDays": "",
+        "priority": "high",
+        "repeats": true,
+        "scheduleKind": "interval",
+        "shiftedFrom": null,
+        "shiftedTo": null,
+        "snoozedUntil": null,
+        "title": "Clean the filter & sump"
+      },
+      "kind": "task",
+      "modifiedAt": "2026-09-22T10:05:00.000Z",
+      "modifiedBy": "B2222222-2222-4222-8222-222222222222",
+      "uid": "task-filter"
+    },
+    {
+      "data": {
+        "anchorDate": "2026-09-30T22:00:00.000Z",
+        "assigneeUid": "person-bostjan",
+        "baselineDoneAt": "2026-09-20T08:02:00.000Z",
+        "createdAt": "2026-09-20T08:02:00.000Z",
+        "intervalUnit": "month",
+        "intervalValue": 1,
+        "isActive": true,
+        "itemUid": "item-dishwasher",
+        "preferredDays": "",
+        "repeats": true,
+        "scheduleKind": "fixedDate",
+        "shiftedFrom": null,
+        "shiftedTo": null,
+        "snoozedUntil": null,
+        "title": "Refill salt & rinse aid"
+      },
+      "kind": "task",
+      "modifiedAt": "2026-09-21T07:00:00.000Z",
+      "modifiedBy": "B2222222-2222-4222-8222-222222222222",
+      "uid": "task-salt"
+    },
+    {
+      "data": {
+        "completedAt": "2026-09-22T10:00:30.123Z",
+        "completedByUid": "person-ana",
+        "note": "",
+        "taskUid": "task-filter"
+      },
+      "kind": "taskLog",
+      "modifiedAt": "2026-09-22T10:00:30.123Z",
+      "modifiedBy": "A1111111-1111-4111-8111-111111111111",
+      "uid": "log-a1"
+    },
+    {
+      "data": {
+        "completedAt": "2026-09-22T10:04:00.000Z",
+        "completedByUid": "person-bostjan",
+        "note": "Was really dirty",
+        "taskUid": "task-filter"
+      },
+      "kind": "taskLog",
+      "modifiedAt": "2026-09-22T10:04:00.000Z",
+      "modifiedBy": "B2222222-2222-4222-8222-222222222222",
+      "uid": "log-b1"
+    }
+  ],
+  "tombstones": [
+    {
+      "deletedAt": "2026-09-21T10:00:00.000Z",
+      "deletedBy": "B2222222-2222-4222-8222-222222222222",
+      "kind": "homeItem",
+      "uid": "item-windows"
+    },
+    {
+      "deletedAt": "2026-09-12T00:00:00.000Z",
+      "deletedBy": "B2222222-2222-4222-8222-222222222222",
+      "kind": "task",
+      "uid": "task-retired"
+    },
+    {
+      "deletedAt": "2026-09-22T11:00:00.000Z",
+      "deletedBy": "A1111111-1111-4111-8111-111111111111",
+      "kind": "task",
+      "uid": "task-rinse"
+    },
+    {
+      "deletedAt": "2026-09-22T11:00:00.001Z",
+      "deletedBy": "A1111111-1111-4111-8111-111111111111",
+      "kind": "taskLog",
+      "uid": "log-rinse"
+    }
+  ]
+}
