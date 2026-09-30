@@ -1,0 +1,1177 @@
+{
+ "categories": [
+  [
+   "kitchen",
+   "Kitchen"
+  ],
+  [
+   "laundry",
+   "Laundry"
+  ],
+  [
+   "bathroom",
+   "Bathroom"
+  ],
+  [
+   "living",
+   "Living & Bedroom"
+  ],
+  [
+   "climate",
+   "Heating, Cooling & Air"
+  ],
+  [
+   "cleaning",
+   "Cleaning"
+  ],
+  [
+   "safety",
+   "Safety"
+  ],
+  [
+   "other",
+   "Other"
+  ]
+ ],
+ "templates": [
+  {
+   "id": "dishwasher",
+   "name": "Dishwasher",
+   "icon": "dishwasher",
+   "color": "blue",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Clean the filter",
+     1,
+     "month"
+    ],
+    [
+     "Run a cleaning cycle",
+     1,
+     "month"
+    ],
+    [
+     "Refill salt & rinse aid",
+     1,
+     "month"
+    ],
+    [
+     "Wipe the door seal",
+     1,
+     "month"
+    ],
+    [
+     "Clean the spray arms",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "fridge",
+   "name": "Fridge",
+   "icon": "fridge",
+   "color": "indigo",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Toss expired food",
+     1,
+     "week"
+    ],
+    [
+     "Clean shelves & drawers",
+     1,
+     "month"
+    ],
+    [
+     "Clean the door seals",
+     3,
+     "month"
+    ],
+    [
+     "Replace the odor absorber",
+     3,
+     "month"
+    ],
+    [
+     "Vacuum the condenser coils",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "freezer",
+   "name": "Freezer",
+   "icon": "fridge",
+   "color": "teal",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Sort & use up old food",
+     3,
+     "month"
+    ],
+    [
+     "Clean the door seals",
+     3,
+     "month"
+    ],
+    [
+     "Defrost",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "oven",
+   "name": "Oven",
+   "icon": "oven",
+   "color": "orange",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Clean the door glass",
+     1,
+     "month"
+    ],
+    [
+     "Clean the interior",
+     3,
+     "month"
+    ],
+    [
+     "Clean the racks & trays",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "stove",
+   "name": "Stovetop",
+   "icon": "stove",
+   "color": "red",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Degrease the stovetop",
+     1,
+     "week"
+    ],
+    [
+     "Deep-clean burners or glass",
+     1,
+     "month"
+    ],
+    [
+     "Clean the knobs",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "hood",
+   "name": "Range Hood",
+   "icon": "hood",
+   "color": "gray",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Clean the grease filters",
+     1,
+     "month"
+    ],
+    [
+     "Wipe the outside",
+     1,
+     "month"
+    ],
+    [
+     "Replace the carbon filter",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "microwave",
+   "name": "Microwave",
+   "icon": "microwave",
+   "color": "teal",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Steam-clean the inside",
+     2,
+     "week"
+    ],
+    [
+     "Wash the turntable",
+     2,
+     "week"
+    ]
+   ]
+  },
+  {
+   "id": "coffee",
+   "name": "Coffee Machine",
+   "icon": "coffee",
+   "color": "brown",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Rinse the brew group",
+     1,
+     "week"
+    ],
+    [
+     "Clean the milk frother",
+     1,
+     "week"
+    ],
+    [
+     "Empty & wash the drip tray",
+     1,
+     "week"
+    ],
+    [
+     "Descale",
+     2,
+     "month"
+    ],
+    [
+     "Replace the water filter",
+     2,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "kettle",
+   "name": "Kettle",
+   "icon": "kettle",
+   "color": "green",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Descale",
+     1,
+     "month"
+    ],
+    [
+     "Rinse the limescale filter",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "jug",
+   "name": "Water Filter",
+   "icon": "jug",
+   "color": "blue",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Replace the filter cartridge",
+     1,
+     "month"
+    ],
+    [
+     "Wash the jug",
+     2,
+     "week"
+    ]
+   ]
+  },
+  {
+   "id": "kitchensink",
+   "name": "Kitchen Sink",
+   "icon": "faucet",
+   "color": "purple",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Replace the sponge",
+     2,
+     "week"
+    ],
+    [
+     "Freshen the drain",
+     2,
+     "week"
+    ],
+    [
+     "Descale the faucet",
+     1,
+     "month"
+    ],
+    [
+     "Clean the aerator",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "trash",
+   "name": "Trash & Recycling",
+   "icon": "trash",
+   "color": "green",
+   "category": "kitchen",
+   "room": "Kitchen",
+   "suggestions": [
+    [
+     "Take out the recycling",
+     1,
+     "week"
+    ],
+    [
+     "Wash the bins",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "washer",
+   "name": "Washing Machine",
+   "icon": "washer",
+   "color": "teal",
+   "category": "laundry",
+   "room": "Laundry",
+   "suggestions": [
+    [
+     "Wipe the door seal",
+     2,
+     "week"
+    ],
+    [
+     "Clean the drum (hot empty cycle)",
+     1,
+     "month"
+    ],
+    [
+     "Clean the detergent drawer",
+     1,
+     "month"
+    ],
+    [
+     "Clean the drain filter",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "dryer",
+   "name": "Tumble Dryer",
+   "icon": "dryer",
+   "color": "indigo",
+   "category": "laundry",
+   "room": "Laundry",
+   "suggestions": [
+    [
+     "Clean the lint filter",
+     1,
+     "week"
+    ],
+    [
+     "Empty the water tank",
+     1,
+     "week"
+    ],
+    [
+     "Rinse the condenser / heat pump filter",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "iron",
+   "name": "Iron",
+   "icon": "iron",
+   "color": "pink",
+   "category": "laundry",
+   "room": "Laundry",
+   "suggestions": [
+    [
+     "Clean the soleplate",
+     1,
+     "month"
+    ],
+    [
+     "Descale",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "shower",
+   "name": "Shower & Bath",
+   "icon": "shower",
+   "color": "teal",
+   "category": "bathroom",
+   "room": "Bathroom",
+   "suggestions": [
+    [
+     "Scrub shower & tub",
+     1,
+     "week"
+    ],
+    [
+     "Clean the drain",
+     1,
+     "month"
+    ],
+    [
+     "Wash the shower curtain / squeegee glass",
+     1,
+     "month"
+    ],
+    [
+     "Descale the shower head",
+     3,
+     "month"
+    ],
+    [
+     "Scrub the grout",
+     3,
+     "month"
+    ],
+    [
+     "Check the silicone seals",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "toilet",
+   "name": "Toilet",
+   "icon": "toilet",
+   "color": "blue",
+   "category": "bathroom",
+   "room": "Bathroom",
+   "suggestions": [
+    [
+     "Clean the toilet",
+     1,
+     "week"
+    ],
+    [
+     "Descale the bowl",
+     1,
+     "month"
+    ],
+    [
+     "Clean around the seat hinges",
+     1,
+     "month"
+    ],
+    [
+     "Check for leaks & running flush",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "bathsink",
+   "name": "Bathroom Sink",
+   "icon": "faucet",
+   "color": "purple",
+   "category": "bathroom",
+   "room": "Bathroom",
+   "suggestions": [
+    [
+     "Descale the faucet",
+     1,
+     "month"
+    ],
+    [
+     "Clear the drain",
+     1,
+     "month"
+    ],
+    [
+     "Clean the aerator",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "extractor",
+   "name": "Extractor Fan",
+   "icon": "fan",
+   "color": "gray",
+   "category": "bathroom",
+   "room": "Bathroom",
+   "suggestions": [
+    [
+     "Clean the fan grille",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "window",
+   "name": "Windows",
+   "icon": "window",
+   "color": "blue",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Clean the glass",
+     3,
+     "month"
+    ],
+    [
+     "Clean frames, sills & tracks",
+     6,
+     "month"
+    ],
+    [
+     "Lubricate hinges & handles",
+     1,
+     "year"
+    ],
+    [
+     "Check the seals",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "door",
+   "name": "Doors & Handles",
+   "icon": "door",
+   "color": "green",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Disinfect door handles & light switches",
+     1,
+     "week"
+    ],
+    [
+     "Tighten handle screws",
+     6,
+     "month"
+    ],
+    [
+     "Lubricate hinges & locks",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "floor",
+   "name": "Floors",
+   "icon": "floor",
+   "color": "orange",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Vacuum",
+     1,
+     "week"
+    ],
+    [
+     "Mop",
+     2,
+     "week"
+    ],
+    [
+     "Clean the baseboards",
+     3,
+     "month"
+    ],
+    [
+     "Oil or polish wood floors",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "rug",
+   "name": "Rugs & Carpets",
+   "icon": "rug",
+   "color": "red",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Vacuum both sides",
+     1,
+     "month"
+    ],
+    [
+     "Rotate",
+     6,
+     "month"
+    ],
+    [
+     "Deep clean",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "sofa",
+   "name": "Sofa",
+   "icon": "sofa",
+   "color": "brown",
+   "category": "living",
+   "room": "Living Room",
+   "suggestions": [
+    [
+     "Vacuum the cushions",
+     1,
+     "month"
+    ],
+    [
+     "Flip & fluff cushions",
+     1,
+     "month"
+    ],
+    [
+     "Wash the covers",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "curtains",
+   "name": "Curtains & Blinds",
+   "icon": "curtains",
+   "color": "purple",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Dust the blinds",
+     1,
+     "month"
+    ],
+    [
+     "Wash the curtains",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "bed",
+   "name": "Bed & Mattress",
+   "icon": "bed",
+   "color": "orange",
+   "category": "living",
+   "room": "Bedroom",
+   "suggestions": [
+    [
+     "Change the bed sheets",
+     1,
+     "week"
+    ],
+    [
+     "Rotate the mattress",
+     3,
+     "month"
+    ],
+    [
+     "Wash pillows & duvet",
+     6,
+     "month"
+    ],
+    [
+     "Vacuum the mattress",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "lamp",
+   "name": "Lights & Lamps",
+   "icon": "lamp",
+   "color": "yellow",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Dust lamps & fixtures",
+     3,
+     "month"
+    ],
+    [
+     "Check for dead bulbs",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "tv",
+   "name": "TV & Electronics",
+   "icon": "tv",
+   "color": "indigo",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Dust screens & vents",
+     1,
+     "month"
+    ],
+    [
+     "Disinfect remotes & keyboards",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "router",
+   "name": "Wi-Fi Router",
+   "icon": "router",
+   "color": "green",
+   "category": "living",
+   "room": "",
+   "suggestions": [
+    [
+     "Restart",
+     1,
+     "month"
+    ],
+    [
+     "Check for firmware updates",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "ac",
+   "name": "Air Conditioner",
+   "icon": "ac",
+   "color": "blue",
+   "category": "climate",
+   "room": "",
+   "suggestions": [
+    [
+     "Clean the filters",
+     1,
+     "month"
+    ],
+    [
+     "Professional service",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "radiator",
+   "name": "Heating",
+   "icon": "radiator",
+   "color": "red",
+   "category": "climate",
+   "room": "",
+   "suggestions": [
+    [
+     "Dust the radiators",
+     1,
+     "month"
+    ],
+    [
+     "Bleed the radiators",
+     1,
+     "year"
+    ],
+    [
+     "Boiler service",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "waterheater",
+   "name": "Water Heater",
+   "icon": "waterheater",
+   "color": "orange",
+   "category": "climate",
+   "room": "",
+   "suggestions": [
+    [
+     "Check the pressure & for leaks",
+     3,
+     "month"
+    ],
+    [
+     "Flush & descale",
+     1,
+     "year"
+    ],
+    [
+     "Professional service",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "purifier",
+   "name": "Air Purifier",
+   "icon": "purifier",
+   "color": "teal",
+   "category": "climate",
+   "room": "",
+   "suggestions": [
+    [
+     "Vacuum the pre-filter",
+     1,
+     "month"
+    ],
+    [
+     "Replace the HEPA filter",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "humidifier",
+   "name": "Humidifier / Dehumidifier",
+   "icon": "humidifier",
+   "color": "blue",
+   "category": "climate",
+   "room": "",
+   "suggestions": [
+    [
+     "Empty & rinse the tank",
+     1,
+     "week"
+    ],
+    [
+     "Descale",
+     1,
+     "month"
+    ],
+    [
+     "Clean or replace the filter",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "fan",
+   "name": "Fan",
+   "icon": "fan",
+   "color": "teal",
+   "category": "climate",
+   "room": "",
+   "suggestions": [
+    [
+     "Dust the blades & grille",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "robotvacuum",
+   "name": "Robot Vacuum",
+   "icon": "vacuum",
+   "color": "purple",
+   "category": "cleaning",
+   "room": "",
+   "suggestions": [
+    [
+     "Empty the dust bin",
+     3,
+     "day"
+    ],
+    [
+     "Wash the mop pad",
+     1,
+     "week"
+    ],
+    [
+     "Empty & rinse the dirty water tank",
+     1,
+     "week"
+    ],
+    [
+     "Refill & rinse the clean water tank",
+     1,
+     "week"
+    ],
+    [
+     "Untangle the main & side brushes",
+     2,
+     "week"
+    ],
+    [
+     "Tap out & rinse the filter",
+     2,
+     "week"
+    ],
+    [
+     "Wipe sensors, wheels & charging contacts",
+     1,
+     "month"
+    ],
+    [
+     "Replace the dock's dust bag",
+     2,
+     "month"
+    ],
+    [
+     "Replace the filter",
+     3,
+     "month"
+    ],
+    [
+     "Replace the side brush",
+     6,
+     "month"
+    ],
+    [
+     "Replace the main brush",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "stickvac",
+   "name": "Vacuum Cleaner",
+   "icon": "stickvac",
+   "color": "indigo",
+   "category": "cleaning",
+   "room": "",
+   "suggestions": [
+    [
+     "Empty & rinse the dust bin",
+     2,
+     "week"
+    ],
+    [
+     "Untangle the brush roll",
+     1,
+     "month"
+    ],
+    [
+     "Wash or replace the filter",
+     3,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "smoke",
+   "name": "Smoke Detector",
+   "icon": "smoke",
+   "color": "red",
+   "category": "safety",
+   "room": "",
+   "suggestions": [
+    [
+     "Test the alarm",
+     1,
+     "month"
+    ],
+    [
+     "Replace the battery",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "co",
+   "name": "Carbon Monoxide Detector",
+   "icon": "smoke",
+   "color": "orange",
+   "category": "safety",
+   "room": "",
+   "suggestions": [
+    [
+     "Test the alarm",
+     1,
+     "month"
+    ],
+    [
+     "Replace the battery",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "extinguisher",
+   "name": "Fire Extinguisher",
+   "icon": "extinguisher",
+   "color": "red",
+   "category": "safety",
+   "room": "",
+   "suggestions": [
+    [
+     "Check the pressure gauge",
+     6,
+     "month"
+    ],
+    [
+     "Professional inspection",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "firstaid",
+   "name": "First Aid Kit",
+   "icon": "firstaid",
+   "color": "green",
+   "category": "safety",
+   "room": "",
+   "suggestions": [
+    [
+     "Check expiry dates",
+     6,
+     "month"
+    ],
+    [
+     "Restock supplies",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "plant",
+   "name": "Plants",
+   "icon": "plant",
+   "color": "green",
+   "category": "other",
+   "room": "",
+   "suggestions": [
+    [
+     "Water",
+     1,
+     "week"
+    ],
+    [
+     "Dust the leaves",
+     1,
+     "month"
+    ],
+    [
+     "Fertilize",
+     1,
+     "month"
+    ],
+    [
+     "Repot",
+     1,
+     "year"
+    ]
+   ]
+  },
+  {
+   "id": "balcony",
+   "name": "Balcony",
+   "icon": "balcony",
+   "color": "teal",
+   "category": "other",
+   "room": "Balcony",
+   "suggestions": [
+    [
+     "Sweep",
+     2,
+     "week"
+    ],
+    [
+     "Clear the drain",
+     3,
+     "month"
+    ],
+    [
+     "Wash the railing & furniture",
+     6,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "pet",
+   "name": "Pet",
+   "icon": "paw",
+   "color": "brown",
+   "category": "other",
+   "room": "",
+   "suggestions": [
+    [
+     "Wash food & water bowls",
+     1,
+     "day"
+    ],
+    [
+     "Clean the litter box",
+     1,
+     "day"
+    ],
+    [
+     "Wash the pet bed",
+     1,
+     "month"
+    ],
+    [
+     "Flea & tick treatment",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
+   "id": "custom",
+   "name": "Something Else",
+   "icon": "generic",
+   "color": "gray",
+   "category": "other",
+   "room": "",
+   "suggestions": []
+  }
+ ]
+}
