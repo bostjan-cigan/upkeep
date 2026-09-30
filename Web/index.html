@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Routine home maintenance for the whole household." />
+    <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // The look, before the first paint, so the flat appearance never flickers past. Placed
+      // after the theme-color metas because it rewrites them, and before the stylesheet Vite
+      // appends to this head. Deliberately dumber than src/app/appearance.ts: rather than keep
+      // the same reasoning byte-identical in two languages, it reuses what that resolver
+      // decided last launch, and only guesses on a first run.
+      (function () {
+        var supports = function (property, value) {
+          return !!(window.CSS && CSS.supports && CSS.supports(property, value))
+        }
+        var remembered
+        try {
+          var pref = localStorage.getItem('upkeep.appearance')
+          remembered = pref === 'glass' || pref === 'classic' ? pref : localStorage.getItem('upkeep.appearance.resolved')
+        } catch (e) {
+          // Private mode.
+        }
+        var glass =
+          remembered === 'glass' ||
+          remembered === 'classic'
+            ? remembered === 'glass'
+            : supports('backdrop-filter', 'blur(1px)') || supports('-webkit-backdrop-filter', 'blur(1px)')
+        // Reduce Transparency wins over anything remembered, the same way the resolver has it.
+        if (matchMedia('(prefers-reduced-transparency: reduce)').matches) glass = false
+        document.documentElement.setAttribute('data-appearance', glass ? 'glass' : 'classic')
+        if (glass) {
+          // iOS standalone reads theme-color around launch and is unreliable about later
+          // changes, so this is the only place the glass tint lands dependably.
+          var tint = function (media, colour) {
+            var meta = document.querySelector('meta[name="theme-color"][media="' + media + '"]')
+            if (meta) meta.setAttribute('content', colour)
+          }
+          tint('(prefers-color-scheme: light)', '#EEF0F6')
+          tint('(prefers-color-scheme: dark)', '#07070A')
+        }
+      })()
+    </script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Upkeep" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <title>Upkeep</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Startup watchdog. The app draws nothing until its local database opens, and iOS
+      // sometimes stalls that (or a script fails to load) on the first launch after the app was
+      // added to the Home Screen — which used to look like a blank screen. Reload once quietly;
+      // if it still hasn't started, say so and offer a reload that also refreshes the app's
+      // offline copy. The household data on this device is never touched here.
+      // src/app/StartupGuard.tsx calls window.upkeepStartupFailed for errors while rendering.
+      (function () {
+        var KEY = 'upkeep.startupReloadAt'
+        var root = document.getElementById('root')
+        var shown = false
+        function reloadedRecently() {
+          try { return Date.now() - Number(sessionStorage.getItem(KEY) || 0) < 30000 } catch (e) { return true }
+        }
+        function reload(fresh) {
+          try { sessionStorage.setItem(KEY, String(Date.now())) } catch (e) {}
+          var steps = []
+          if (fresh && navigator.serviceWorker) {
+            steps.push(navigator.serviceWorker.getRegistrations().then(function (regs) {
+              return Promise.all(regs.map(function (r) { return r.unregister() }))
+            }))
+          }
+          if (fresh && window.caches) {
+            steps.push(caches.keys().then(function (keys) { return Promise.all(keys.map(function (k) { return caches.delete(k) })) }))
+          }
+          Promise.all(steps).catch(function () {}).then(function () { location.reload() })
+        }
+        function show(detail) {
+          if (shown) return
+          shown = true
+          var box = document.createElement('div')
+          box.setAttribute('role', 'alert')
+          box.style.cssText = 'position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;' +
+            'gap:12px;padding:24px;text-align:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:Canvas;color:CanvasText;z-index:9999'
+          box.innerHTML = '<strong style="font-size:20px">Upkeep needs a reload</strong>' +
+            '<span style="opacity:.6;max-width:320px">Nothing on this device is lost. Reloading usually fixes it.</span>' +
+            '<button style="font:inherit;font-weight:600;color:#fff;background:#007AFF;border:0;border-radius:12px;padding:12px 22px">Reload</button>' +
+            (detail ? '<code style="opacity:.45;font-size:12px;max-width:320px;word-break:break-word"></code>' : '')
+          if (detail) box.querySelector('code').textContent = detail
+          box.querySelector('button').onclick = function () { reload(true) }
+          document.body.appendChild(box)
+        }
+        window.upkeepStartupFailed = function (detail) {
+          if (reloadedRecently()) show(detail)
+          else reload(false)
+        }
+        setTimeout(function () {
+          if (root && root.childElementCount === 0) window.upkeepStartupFailed('It took too long to start.')
+        }, 8000)
+      })()
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
