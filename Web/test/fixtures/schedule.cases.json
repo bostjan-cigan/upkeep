@@ -1,0 +1,118 @@
+{
+  "comment": "Scheduling cases both the Mac (Tests/Core/main.swift) and the PWA (Web/test/schedule.test.ts) check, so the two can't drift. Dates are local: YYYY-MM-DD, optionally with HH:mm.",
+  "timeZone": "Europe/Ljubljana",
+  "cases": [
+    {
+      "name": "no preferred day leaves the interval alone",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-01", "completions": [],
+      "preferredDays": "", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-01"
+    },
+    {
+      "name": "every day preferred is the same as none",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-01", "completions": [],
+      "preferredDays": "1234567", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-01"
+    },
+    {
+      "name": "a due date already on a preferred day stays put",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "week", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-19", "completions": [],
+      "preferredDays": "7", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-09-26"
+    },
+    {
+      "name": "snaps forward to the nearest preferred day",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-01", "completions": [],
+      "preferredDays": "7", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-03"
+    },
+    {
+      "name": "snaps back when the preferred day before is nearer",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "week", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": null, "completions": ["2026-09-27 09:30"],
+      "preferredDays": "7", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-28 10:00", "expectedDue": "2026-10-03"
+    },
+    {
+      "name": "a tie between two preferred days takes the later one",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "week", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-30", "completions": [],
+      "preferredDays": "17", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-10-01 08:00", "expectedDue": "2026-10-10"
+    },
+    {
+      "name": "an overdue task is never pushed further away",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "week", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-01", "completions": [],
+      "preferredDays": "7", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-09-08"
+    },
+    {
+      "name": "a preferred day never lands in the past",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": null, "completions": [],
+      "preferredDays": "17", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-09-26"
+    },
+    {
+      "name": "a sub-weekly interval ignores the preferred day",
+      "scheduleKind": "interval", "intervalValue": 3, "intervalUnit": "day", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-21", "completions": [],
+      "preferredDays": "7", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-09-24"
+    },
+    {
+      "name": "a fixed date ignores the preferred day",
+      "scheduleKind": "fixedDate", "intervalValue": 1, "intervalUnit": "year", "repeats": true,
+      "anchorDate": "2026-10-07", "baselineDoneAt": null, "completions": [],
+      "preferredDays": "7", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-07"
+    },
+    {
+      "name": "snapping crosses a daylight saving change",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "week", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-03-22", "completions": [],
+      "preferredDays": "7", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-03-25 12:00", "expectedDue": "2026-03-28"
+    },
+    {
+      "name": "a start date decides the first one",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": "2026-10-03", "baselineDoneAt": null, "completions": [],
+      "preferredDays": "", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-03"
+    },
+    {
+      "name": "a start date stops mattering once it has been done",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": "2026-10-03", "baselineDoneAt": null, "completions": ["2026-09-20 11:00"],
+      "preferredDays": "", "shiftedFrom": null, "shiftedTo": null,
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-20"
+    },
+    {
+      "name": "a shift moves the occurrence it was made for",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-01", "completions": [],
+      "preferredDays": "", "shiftedFrom": "2026-10-01", "shiftedTo": "2026-10-04",
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-04"
+    },
+    {
+      "name": "a shift for another date is ignored",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-01", "completions": [],
+      "preferredDays": "", "shiftedFrom": "2026-09-30", "shiftedTo": "2026-10-04",
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-01"
+    },
+    {
+      "name": "a shift is matched against the snapped date, not the raw one",
+      "scheduleKind": "interval", "intervalValue": 1, "intervalUnit": "month", "repeats": true,
+      "anchorDate": null, "baselineDoneAt": "2026-09-01", "completions": [],
+      "preferredDays": "7", "shiftedFrom": "2026-10-03", "shiftedTo": "2026-10-05",
+      "now": "2026-09-22 15:00", "expectedDue": "2026-10-05"
+    }
+  ]
+}
