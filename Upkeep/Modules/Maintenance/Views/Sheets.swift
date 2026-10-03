@@ -28,15 +28,18 @@ struct AddItemSheet: View {
     @State private var search = ""
 
     var body: some View {
-        Group {
-            if let template {
-                details(template)
-            } else {
-                picker
+        VStack(spacing: 0) {
+            Group {
+                if let template {
+                    details(template)
+                } else {
+                    picker
+                }
             }
+            .frame(width: 620, height: 680)
+            Divider()
+            footer
         }
-        .frame(width: 620, height: 680)
-        .toolbar { footer }
     }
 
     private var picker: some View {
@@ -169,21 +172,25 @@ struct AddItemSheet: View {
         .formStyle(.grouped)
     }
 
-    @ToolbarContentBuilder private var footer: some ToolbarContent {
-        if template != nil {
-            ToolbarItem(placement: .navigation) {
+    /// A plain footer rather than toolbar items: a sheet's toolbar doesn't pick up items added
+    /// after the picker was scrolled, which left the details step with only Cancel.
+    private var footer: some View {
+        HStack {
+            if template != nil {
                 Button("Back") { withAnimation(.snappy) { template = nil } }
             }
-        }
-        ToolbarItem(placement: .cancellationAction) {
+            Spacer()
             Button("Cancel", role: .cancel) { dismiss() }
-        }
-        if template != nil {
-            ToolbarItem(placement: .confirmationAction) {
+                .keyboardShortcut(.cancelAction)
+            if template != nil {
                 Button("Add Item", action: save)
+                    .keyboardShortcut(.defaultAction)
                     .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
             }
         }
+        .controlSize(.large)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
     }
 
     private func choose(_ t: ItemTemplate) {
