@@ -26,6 +26,8 @@ struct AddItemSheet: View {
     @State private var newTaskUnit: IntervalUnit = .month
     @State private var startFresh = true
     @State private var search = ""
+    /// Open from the start for "Something Else", whose generic icon is only a placeholder.
+    @State private var showingIcons = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -114,6 +116,8 @@ struct AddItemSheet: View {
             Section {
                 HStack(spacing: 16) {
                     ItemIconView(icon: icon, color: color, size: 72)
+                        .onTapGesture { withAnimation(.snappy) { showingIcons.toggle() } }
+                        .help("Choose an icon")
                     TextField("Name", text: $name, prompt: Text("e.g. Kitchen Dishwasher"))
                         .textFieldStyle(.plain)
                         .font(.title2.weight(.semibold))
@@ -121,7 +125,7 @@ struct AddItemSheet: View {
                 .padding(.vertical, 4)
                 RoomField(room: $room)
                 ColorSwatchPicker(selection: $color)
-                DisclosureGroup("Icon") {
+                DisclosureGroup("Icon", isExpanded: $showingIcons) {
                     IconGridPicker(selection: $icon, color: color).padding(.vertical, 6)
                 }
             }
@@ -200,6 +204,7 @@ struct AddItemSheet: View {
             icon = t.icon
             color = t.color
             room = t.room
+            showingIcons = t.id == "custom"
             chosen = Set(t.suggestions.map(\.id))
             schedules = [:]
             assignees = [:]

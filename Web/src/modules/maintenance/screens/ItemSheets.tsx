@@ -65,13 +65,18 @@ export function ItemEditorSheet({ item, onClose, onDeleted }: { item: HomeItem; 
   )
 }
 
-/** Big tile and name, then room, color and icon (the icon grid opens on demand, as on the Mac). */
-function ItemFieldsForm({ fields, onChange }: { fields: ItemFields; onChange: (f: ItemFields) => void }) {
-  const [showIcons, setShowIcons] = useState(false)
+/**
+ * Big tile and name, then room, color and icon (the icon grid opens on demand, as on the Mac;
+ * `iconsOpen` starts it open, for "Something Else", whose generic icon is only a placeholder).
+ */
+function ItemFieldsForm({ fields, onChange, iconsOpen = false }: { fields: ItemFields; onChange: (f: ItemFields) => void; iconsOpen?: boolean }) {
+  const [showIcons, setShowIcons] = useState(iconsOpen)
   return (
     <>
       <div className="item-editor-head">
-        <ItemTile icon={fields.icon} color={fields.color} size={72} />
+        <button type="button" aria-label="Choose an icon" onClick={() => setShowIcons(!showIcons)}>
+          <ItemTile icon={fields.icon} color={fields.color} size={72} />
+        </button>
         <input
           className="item-name"
           value={fields.name}
@@ -241,7 +246,7 @@ function ItemDetailsStep({ template, onBack, onClose, onCreated }: { template: I
         </button>
       }
     >
-      <ItemFieldsForm fields={fields} onChange={setFields} />
+      <ItemFieldsForm fields={fields} onChange={setFields} iconsOpen={isCustom} />
 
       <Section title="Routine" footer="Tap a schedule to change how often it repeats, or a person to make them responsible. You can change or add tasks any time.">
         {choices.length === 0 && <p className="empty-note">No suggestions for this one. Add your own below.</p>}
