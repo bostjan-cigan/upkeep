@@ -39,7 +39,7 @@ async function household(now = NOW) {
 describe('the catalog', () => {
   it('has every template in a known category', () => {
     const keys = new Set(TEMPLATE_CATEGORIES.map(([k]) => k))
-    expect(ITEM_TEMPLATES).toHaveLength(45)
+    expect(ITEM_TEMPLATES).toHaveLength(46)
     for (const t of ITEM_TEMPLATES) expect(keys.has(t.category)).toBe(true)
   })
 
