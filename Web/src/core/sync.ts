@@ -202,13 +202,19 @@ export function startAutoSync({ delayAfterChange = 1200, heartbeatMs = 20_000 } 
  * iOS gives a Home Screen web app its own storage, separate from Safari's. So while this page is
  * still a Safari tab, the token stays in the address and the manifest is swapped for one whose
  * `start_url` carries it (served by the Mac), and the installed icon opens already paired.
+ *
+ * That start URL keeps the token the icon was installed with for good, and every cold launch
+ * opens it. So only a QR code just scanned (`#pair=`) replaces a pairing; the address's own token
+ * fills in a missing one, and never overwrites a newer one (a typed code, say) with one the Mac
+ * may have dropped since — which left the phone "not paired any more" after a launch away from home.
  */
 export async function consumePairingFragment(): Promise<boolean> {
   const fromHash = /^#pair=([^&]+)/.exec(location.hash)?.[1]
   const fromQuery = new URLSearchParams(location.search).get('pair')
   const raw = fromHash ?? fromQuery
   if (!raw) return false
-  const token = decodeURIComponent(raw)
+  const stored = (await allMeta()).pairToken
+  const token = fromHash || !stored ? decodeURIComponent(raw) : stored
   await setMeta('pairToken', token)
   if (isStandalone()) {
     const query = new URLSearchParams(location.search)
