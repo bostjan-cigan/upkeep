@@ -6,7 +6,7 @@ import type { TileColor } from '../../core/people'
 import catalog from './templates.json'
 
 export const ICON_KEYS = [
-  'dishwasher', 'fridge', 'oven', 'stove', 'hood', 'microwave', 'coffee', 'kettle', 'jug', 'trash', 'washer', 'dryer', 'iron', 'shower', 'toilet', 'faucet', 'window', 'door', 'floor', 'rug', 'sofa', 'curtains', 'bed', 'lamp', 'tv', 'router', 'ac', 'radiator', 'waterheater', 'purifier', 'humidifier', 'fan', 'vacuum', 'stickvac', 'smoke', 'extinguisher', 'firstaid', 'plant', 'balcony', 'paw', 'generic',
+  'dishwasher', 'fridge', 'oven', 'stove', 'hood', 'microwave', 'coffee', 'kettle', 'jug', 'trash', 'washer', 'dryer', 'iron', 'shower', 'toilet', 'faucet', 'window', 'door', 'floor', 'rug', 'sofa', 'curtains', 'bed', 'lamp', 'tv', 'router', 'ac', 'radiator', 'waterheater', 'purifier', 'humidifier', 'fan', 'vacuum', 'stickvac', 'duster', 'smoke', 'extinguisher', 'firstaid', 'plant', 'balcony', 'paw', 'generic',
 ] as const
 export type IconKey = (typeof ICON_KEYS)[number]
 

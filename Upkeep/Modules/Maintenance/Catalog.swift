@@ -13,6 +13,8 @@ enum IconKey: String, CaseIterable, Identifiable {
     /// Robot vacuum.
     case vacuum
     case stickvac
+    /// Feather duster, for dusting a room.
+    case duster
     // Safety & other
     case smoke, extinguisher, firstaid, plant, balcony, paw, generic
     var id: String { rawValue }
@@ -292,6 +294,10 @@ struct ItemTemplate: Identifiable {
             .init("Empty & rinse the dust bin", 2, .week),
             .init("Untangle the brush roll", 1, .month),
             .init("Wash or replace the filter", 3, .month),
+        ]),
+        .init(id: "dusting", name: "Dusting", icon: .duster, color: .pink, category: .cleaning, suggestions: [
+            .init("Dust surfaces", 1, .week),
+            .init("Dust shelves, frames & light fixtures", 1, .month),
         ]),
 
         // MARK: Safety

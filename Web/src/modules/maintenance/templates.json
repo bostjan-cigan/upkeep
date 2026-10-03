@@ -1000,6 +1000,26 @@
    ]
   },
   {
+   "id": "dusting",
+   "name": "Dusting",
+   "icon": "duster",
+   "color": "pink",
+   "category": "cleaning",
+   "room": "",
+   "suggestions": [
+    [
+     "Dust surfaces",
+     1,
+     "week"
+    ],
+    [
+     "Dust shelves, frames & light fixtures",
+     1,
+     "month"
+    ]
+   ]
+  },
+  {
    "id": "smoke",
    "name": "Smoke Detector",
    "icon": "smoke",
